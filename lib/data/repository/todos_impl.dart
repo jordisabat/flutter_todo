@@ -15,7 +15,7 @@ class TodosRepositoryImpl extends TodosRepository {
   @override
   Future<Todos> getTodos() async {
     final content = await files.read(path);
-    if (content == null) return const Todos(todos: []);
+    if (content == null) return const Todos(values: []);
     return Todos.fromJson(jsonDecode(content));
   }
 
