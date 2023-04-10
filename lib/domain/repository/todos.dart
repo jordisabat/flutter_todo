@@ -1,13 +1,14 @@
 import '../model/todo.dart';
+import '../model/todos.dart';
 
 abstract class TodosRepository {
-  Future<List<Todo>> getTodos();
+  Future<Todos> getTodos();
 
   Future<void> saveTodo(Todo todo);
 
   Future<void> deleteTodo(Todo todo);
 
-  Future<Todo?> getTodo(String id);
+  Future<Todo?> getTodoById(String id);
 
   Future<void> deleteAllTodos();
 }
