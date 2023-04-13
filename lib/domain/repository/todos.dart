@@ -2,7 +2,7 @@ import '../model/todo.dart';
 import '../model/todos.dart';
 
 abstract class TodosRepository {
-  Future<Todos> getTodos();
+  Future<Todos> loadTodos();
 
   Future<void> saveTodo(Todo todo);
 

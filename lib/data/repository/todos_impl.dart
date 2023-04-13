@@ -13,7 +13,7 @@ class TodosRepositoryImpl extends TodosRepository {
   late final String path = "todos.json";
 
   @override
-  Future<Todos> getTodos() async {
+  Future<Todos> loadTodos() async {
     final content = await files.read(path);
     if (content == null) return const Todos(values: []);
     return Todos.fromJson(jsonDecode(content));
@@ -21,13 +21,13 @@ class TodosRepositoryImpl extends TodosRepository {
 
   @override
   Future<Todo?> getTodoById(String id) async {
-    final todos = await getTodos();
+    final todos = await loadTodos();
     return todos.values.firstWhereOrNull((todo) => todo.id == id);
   }
 
   @override
   Future<void> saveTodo(Todo todo) async {
-    final todos = await getTodos();
+    final todos = await loadTodos();
     final newTodos = todos.values.where((t) => t.id != todo.id).toList();
     newTodos.add(todo);
     await files.write(path, jsonEncode(Todos(values: newTodos).toJson()));
@@ -35,7 +35,7 @@ class TodosRepositoryImpl extends TodosRepository {
 
   @override
   Future<void> deleteTodo(Todo todo) async {
-    final todos = await getTodos();
+    final todos = await loadTodos();
     final newTodos = todos.values.where((t) => t.id != todo.id).toList();
     await files.write(path, jsonEncode(Todos(values: newTodos).toJson()));
   }
