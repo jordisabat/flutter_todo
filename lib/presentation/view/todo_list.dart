@@ -8,7 +8,7 @@ class TodoList extends ConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    final getTodos = ref.watch(getTodosProvider);
+    final getTodos = ref.watch(todosListProvider);
     return Scaffold(
       appBar: AppBar(
         automaticallyImplyLeading: false,

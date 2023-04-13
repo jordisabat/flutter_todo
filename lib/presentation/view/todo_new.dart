@@ -5,8 +5,13 @@ class TodoNew extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return const Center(
-      child: Text('New todo'),
+    return Scaffold(
+      appBar: AppBar(
+        title: const Text('New todo'),
+      ),
+      body: const Center(
+        child: Text('New todo'),
+      ),
     );
   }
 }
